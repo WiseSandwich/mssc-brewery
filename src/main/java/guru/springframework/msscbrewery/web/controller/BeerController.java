@@ -1,12 +1,13 @@
 package guru.springframework.msscbrewery.web.controller;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+import static org.springframework.http.HttpStatus.OK;
 
-import guru.springframework.msscbrewery.web.model.BeerDto;
 import guru.springframework.msscbrewery.services.BeerService;
+import guru.springframework.msscbrewery.web.model.BeerDto;
 import java.util.UUID;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
