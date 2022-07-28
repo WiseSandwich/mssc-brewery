@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 import guru.springframework.msscbrewery.services.CustomerService;
 import guru.springframework.msscbrewery.web.model.CustomerDto;
 import java.util.UUID;
+import javax.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class CustomerController {
   }
 
   @PostMapping
-  public ResponseEntity createCustomer(@RequestBody CustomerDto customerDto) {
+  public ResponseEntity createCustomer(@Valid @RequestBody CustomerDto customerDto) {
 
     CustomerDto savedCustomerDto = customerService.saveNewCustomer(customerDto);
 
@@ -48,7 +49,7 @@ public class CustomerController {
 
   @PutMapping({"/{customerId}"})
   @ResponseStatus(NO_CONTENT)
-  public void updateCustomer(@PathVariable("customerId") UUID customerId, @RequestBody CustomerDto customerDto) {
+  public void updateCustomer(@PathVariable("customerId") UUID customerId, @Valid @RequestBody CustomerDto customerDto) {
     customerService.updateCustomer(customerId);
   }
 
@@ -57,4 +58,5 @@ public class CustomerController {
   public void deleteBeer(@PathVariable("customerId") UUID customerId) {
     customerService.deleteCustomer(customerId);
   }
+
 }

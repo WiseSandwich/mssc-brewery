@@ -7,6 +7,7 @@ import static org.springframework.http.HttpStatus.OK;
 import guru.springframework.msscbrewery.services.BeerService;
 import guru.springframework.msscbrewery.web.model.BeerDto;
 import java.util.UUID;
+import javax.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +37,7 @@ public class BeerController {
   }
 
   @PostMapping //POST - Create a new beer
-  public ResponseEntity handlePost(@RequestBody BeerDto beerDto) {
+  public ResponseEntity handlePost(@Valid @RequestBody BeerDto beerDto) {
 
     BeerDto savedDto = beerService.saveNewBeer(beerDto);
 
@@ -47,7 +48,7 @@ public class BeerController {
   }
 
   @PutMapping({"/{beerId}"})
-  public ResponseEntity handleUpdate(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
+  public ResponseEntity handleUpdate(@PathVariable("beerId") UUID beerId, @Valid @RequestBody BeerDto beerDto) {
 
     beerService.updateBeer(beerId, beerDto);
     return new ResponseEntity(NO_CONTENT);

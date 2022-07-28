@@ -1,4 +1,4 @@
-package guru.springframework.msscbrewery.web.model;
+package guru.springframework.msscbrewery.domain;
 
 import java.util.UUID;
 import javax.validation.constraints.NotBlank;
@@ -12,11 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CustomerDto {
+public class Customer {
 
   private UUID id;
 
   @Size(min = 3, max = 100)
   @NotBlank
   private String name;
+
 }
